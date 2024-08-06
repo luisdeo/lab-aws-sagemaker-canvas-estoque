@@ -1,47 +1,52 @@
-# 📊 Previsão de Estoque Inteligente na AWS com [SageMaker Canvas](https://aws.amazon.com/pt/sagemaker/canvas/)
 
-Bem-vindo ao desafio de projeto "Previsão de Estoque Inteligente na AWS com SageMaker Canvas. Neste Lab DIO, você aprenderá a usar o SageMaker Canvas para criar previsões de estoque baseadas em Machine Learning (ML). Siga os passos abaixo para completar o desafio!
+Dataset usado:
+[dataset_vendas.csv](https://github.com/user-attachments/files/16504130/dataset_vendas.csv)
 
-## 📋 Pré-requisitos
+Estrutura dos Dados para Previsão:
 
-Antes de começar, certifique-se de ter uma conta na AWS. Se precisar de ajuda para criar sua conta, confira nosso repositório [AWS Cloud Quickstart](https://github.com/digitalinnovationone/aws-cloud-quickstart).
-
-
-## 🎯 Objetivos Deste Desafio de Projeto (Lab)
-
-![image](https://github.com/digitalinnovationone/lab-aws-sagemaker-canvas-estoque/assets/730492/72f5c21f-5562-491e-aa42-2885a3184650)
-
-- Dê um fork neste projeto e reescreva este `README.md`. Sinta-se à vontade para detalhar todo o processo de criação do seu Modelo de ML para uma "Previsão de Estoque Inteligente".
-- Para isso, siga o [passo a passo] descrito a seguir e evolua as suas habilidades em ML no-code com o Amazon SageMaker Canvas.
-- Ao concluir, envie a URL do seu repositório com a solução na plataforma da DIO.
+Criado um DataSet com Quantidade de Itens Vendidos como target usando Data de Venda como Data Stamp.
 
 
-## 🚀 Passo a Passo
+  Quantidade de Itens Vendidos:  Quantidade da vendas dos items.
+  Data: Time Stamp das datas de venda.
+  ID: Número do Produto
 
-### 1. Selecionar Dataset
 
--   Navegue até a pasta `datasets` deste repositório. Esta pasta contém os datasets que você poderá escolher para treinar e testar seu modelo de ML. Sinta-se à vontade para gerar/enriquecer seus próprios datasets, quanto mais você se engajar, mais relevante esse projeto será em seu portfólio.
--   Escolha o dataset que você usará para treinar seu modelo de previsão de estoque.
--   Faça o upload do dataset no SageMaker Canvas.
+  Resultados das Métricas de Avaliação:
+   
+![Captura de tela 2024-08-05 223122](https://github.com/user-attachments/assets/7e3fae51-dd11-4ed9-ab61-2f011b03dc36)
 
-### 2. Construir/Treinar
+  Avg. wQL:
+  
+		Valor: 0.522
+		O que é: Mede o erro de previsão, levando em conta diferentes percentuais.
+	
+ MAPE: 
+ 
+		Valor: 1.170
+		O que é: Mostra o quão errado o modelo está, como uma porcentagem dos valores reais.
+	
+ WAPE:
+ 
+		Valor: 0.667
+		O que é: Pondera os erros de acordo com a importância dos dados.
+	
+ RMSE:
+ 
+   	        Valor: 18.248
+            O que é: Mostra a magnitude dos erros.
+	
+ MASE:
+ 
+            Valor: 0.761
+   	        O que é: Compara o erro do modelo com um método simples. Se o valor for menor que 1, o modelo é melhor que a média.
 
--   No SageMaker Canvas, importe o dataset que você selecionou.
--   Configure as variáveis de entrada e saída de acordo com os dados.
--   Inicie o treinamento do modelo. Isso pode levar algum tempo, dependendo do tamanho do dataset.
 
-### 3. Analisar
+Pode se dizer que o Dataset usado é um modelo OK que poderia ser mais refinado para os processamentos de Machine Learning.
 
--   Após o treinamento, examine as métricas de performance do modelo.
--   Verifique as principais características que influenciam as previsões.
--   Faça ajustes no modelo se necessário e re-treine até obter um desempenho satisfatório.
 
-### 4. Prever
+Usaremos o Item 3, para a predição.
+![Captura de tela 2024-08-05 222213](https://github.com/user-attachments/assets/d685100d-ea92-4eb5-932c-23f39386c38c)
 
--   Use o modelo treinado para fazer previsões de estoque.
--   Exporte os resultados e analise as previsões geradas.
--   Documente suas conclusões e qualquer insight obtido a partir das previsões.
-
-## 🤔 Dúvidas?
-
-Esperamos que esta experiência tenha sido enriquecedora e que você tenha aprendido mais sobre Machine Learning aplicado a problemas reais. Se tiver alguma dúvida, não hesite em abrir uma issue neste repositório ou entrar em contato com a equipe da DIO.
+E segundo os resultados usaremos o forecast quantile do P50 pois é uma predição não otimista e não muito pessimista.
+Aonde não saímos de perto da média geral de quantidade vendidas.
